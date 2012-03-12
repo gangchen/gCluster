@@ -23,5 +23,4 @@ class Edge{
   Node* getStartNode();
   Node* getEndNode();
 };
-
 #endif

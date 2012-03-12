@@ -25,6 +25,7 @@ class Node{
   bool setLabel(string);
   bool addEdge(Edge*);
   vector<Edge*>* getEdges() const;
+  bool operator ==(Node*); 
 };
 
 #endif

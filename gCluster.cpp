@@ -17,14 +17,20 @@ bool gCluster::loadGraph(string filename){
   
   string nodeLabel1, nodeLabel2, weight;
   while(networkFilestream >> nodeLabel1 >> nodeLabel2 >> weight){
-    //cout << nodeLabel1 << "\t" << nodeLabel2 << "\t" << weight << endl;
     Node* node1 = new Node(1, nodeLabel1);
     Node* node2 = new Node(2, nodeLabel2);
     Edge* e = new Edge(node1, node2);
     set<Node*>::iterator itNode1 = g->addNode(node1);
     set<Node*>::iterator itNode2 = g->addNode(node2);
-    (*itNode1)->addEdge(e);
-    (*itNode2)->addEdge(e);
+
+    if(!(*itNode1)->addEdge(e)){
+      cout << "ERROR" << endl;
+      exit(1);
+    }
+    if(!(*itNode2)->addEdge(e)){
+      cout << "ERROR" << endl;
+      exit(1);
+    }
     g->addEdge(e);
   }
   networkFilestream.close();
@@ -34,7 +40,14 @@ bool gCluster::loadGraph(string filename){
   for(set<Node*>::iterator it = g->getNodes()->begin();
       it != g->getNodes()->end();
       it ++){
-    cout << (*it)->getLabel() << endl;
+    cout << (*it)->getLabel() << ":";
+    vector<Edge*>* edges = (*it)->getEdges();
+    for(vector<Edge*>::iterator eit = edges->begin();
+	eit != edges->end();
+	eit++){
+      cout << (*eit)->getStartNode()->getLabel() << ",";
+    }
+    cout << endl;
   }
   return true;
 }
