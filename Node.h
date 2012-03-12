@@ -14,15 +14,17 @@ class Node{
  private:
   int id;
   string label;
-  vector<Edge*> edges;
+  vector<Edge*>* edges;
  public:
   Node(int, string);
   Node(string);
-  int getId();
-  string getLabel();
+  Node();
+  int getId() const;
+  string getLabel() const;
   bool setId(int);
   bool setLabel(string);
-  bool addEdge(Edge);
+  bool addEdge(Edge*);
+  vector<Edge*>* getEdges() const;
 };
 
 #endif

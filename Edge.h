@@ -14,12 +14,14 @@ class Edge{
  private:
   Node* startNode;
   Node* endNode;
+  double weight;
  public:
   Edge();
-  Edge(Node, Node);
+  Edge(Node*, Node*);
+  Edge(Node*, Node*, double);
   ~Edge();
-  Node getStartNode();
-  Node getEndNode();
+  Node* getStartNode();
+  Node* getEndNode();
 };
 
 #endif

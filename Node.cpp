@@ -12,11 +12,11 @@ Node::Node(string nodeLabel){
   label = nodeLabel;
 }
 
-int Node::getId(){
+int Node::getId() const{
   return id;
 }
 
-string Node::getLabel(){
+string Node::getLabel() const{
   return label;
 }
 
@@ -28,12 +28,15 @@ bool Node::setLabel(string nodeLabel){
   label = nodeLabel;
 }
 
-/*
-bool Node::addEdge(Edge e){
-  if(e.getStartNode() == this || e.getEndNode() == this){
-    edges.push_back(e);
+bool Node::addEdge(Edge* e){
+  if(e->getStartNode() == this || e->getEndNode() == this){
+    edges->push_back(e);
     return true;
   }else{
     return false;
   }
-  }*/
+}
+
+vector<Edge*>* Node::getEdges() const{
+  return edges;
+}

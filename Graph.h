@@ -7,20 +7,29 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <set>
 
 using namespace std;
 
+class nodeCmp{
+ public:
+  bool operator()(const Node* node1, const Node* node2) const{
+    return node1->getLabel() < node2->getLabel();
+  }
+};
+
 class Graph{
  private:
-  vector<Node> nodes;
-  vector<Edge> edges;
+  set<Node*, nodeCmp> *nodes;
+  vector<Edge*> *edges;
   
  public:
-  Graph(vector<Node>, vector<Edge>);
-  bool addEdge(Edge);
-  bool addNode(Node);
-  vector<Node> getNodes();
-  vector<Edge> getEdges();
+  Graph();
+  Graph(vector<Node*>, vector<Edge*>);
+  bool addEdge(Edge*);
+  set<Node*>::iterator addNode(Node*);
+  set<Node*, nodeCmp>* getNodes();
+  vector<Edge*>* getEdges();
 };
 
 #endif
