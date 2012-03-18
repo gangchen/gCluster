@@ -35,20 +35,6 @@ bool gCluster::loadGraph(string filename){
   }
   networkFilestream.close();
 
-  cout << g->getEdges()->size() << endl;
-  cout << g->getNodes()->size() << endl;
-  for(set<Node*>::iterator it = g->getNodes()->begin();
-      it != g->getNodes()->end();
-      it ++){
-    cout << (*it)->getLabel() << ":";
-    vector<Edge*>* edges = (*it)->getEdges();
-    for(vector<Edge*>::iterator eit = edges->begin();
-	eit != edges->end();
-	eit++){
-      cout << (*eit)->getStartNode()->getLabel() << ",";
-    }
-    cout << endl;
-  }
   return true;
 }
 

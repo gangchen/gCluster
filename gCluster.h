@@ -2,6 +2,7 @@
 #define GCLUSTER_H
 
 #include "Graph.h"
+#include "Cluster.h"
 
 #include <string>
 #include <iostream>
